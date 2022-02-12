@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,7 +9,21 @@
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
 </head>
+
 <body>
+  <h1>ETCH-A-SKETCH</h1>
+  <p>by <a href="https://github.com/nerminDonlag" target="_blank">Andy</a></p>
+  <form>
+    <p>Please select pixel density:</p>
+    <input type="radio" id="25px-density" name="px-density" value="25px-density">
+    <label for="25px-density">25px x 25px</label><br>
+    <input type="radio" id="50px-density" name="px-density" value="50px-density" checked="checked">
+    <label for="50px-density">50px x 50px</label><br>
+    <input type="radio" id="100px-density" name="px-density" value="100px-density">
+    <label for="100px-density">100px x 100px</label><br>
+  </form>
+  <button id="reset-btn">Reset sketck</button><br>
   <div id="grid-container"></div>
 </body>
+
 </html>

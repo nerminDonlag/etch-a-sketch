@@ -1,14 +1,13 @@
-body {
-  margin: 0px;
-  font-size: 0; /* get's rid of whitespace */
-}
-
 #grid-container {
   border: 5px solid orangered;
   display: inline-block;
+  font-size: 0; /* get's rid of whitespace */
 }
 
 .innerDiv {
-  background-color: pink;
   display: inline-block;
+}
+
+button {
+  margin: 20px 0px;
 }
