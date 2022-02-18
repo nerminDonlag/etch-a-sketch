@@ -1,7 +1,16 @@
+body {
+  font-size: large;
+}
+
+#container {
+  width: 600px;
+  margin: auto;
+}
+
 #grid-container {
   border: 5px solid orangered;
-  display: inline-block;
   font-size: 0; /* get's rid of whitespace */
+  margin: auto;
 }
 
 .innerDiv {
@@ -9,5 +18,27 @@
 }
 
 button {
-  margin: 20px 0px;
+  display: block;
+  font-size: larger;
+  width: 180px;
+  margin-top: 18px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+h1, #author {
+  text-align: center;
+}
+
+form {
+margin-left: 72px;
+margin-bottom: 18px;
+}
+
+h1 {
+  margin-top: 36px;
+}
+
+.innerDiv {
+  cursor: crosshair;
 }
