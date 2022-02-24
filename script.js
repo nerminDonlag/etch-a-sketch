@@ -1,65 +1,63 @@
-let mouseDown = false
-document.body.onmousedown = () => (mouseDown = true)
-document.body.onmouseup = () => (mouseDown = false)
+let mouseDown = false;
+document.body.onmousedown = () => (mouseDown = true);
+document.body.onmouseup = () => (mouseDown = false);
 
+const blankSquare = '#eee';
+let coloredSquare = document.querySelector('#color-picker').value;
+
+// density is the number of squares in a row / column
 function createGrid(density) {
-  const gridContainer = document.getElementById('grid-container');
-  const currentPixelDensity = density; //25, 50, 100
-  const gridDimension = currentPixelDensity;
-  const boxDimension = (500 / gridDimension);
-  const gridArrayDiv = [];
-  const gridArrayElements = [];
-
-  gridContainer.style.width = `${boxDimension * gridDimension}px`;
-  gridContainer.style.height = `${boxDimension * gridDimension}px`;
-
-
-  for (let i = 0; i < gridDimension; i++) {
-    gridArrayDiv[i] = document.createElement('div');
-    gridContainer.appendChild(gridArrayDiv[i]);
-    gridArrayElements[i] = [];
-    for (let j = 0; j < gridDimension; j++) {
-      gridArrayElements[i][j] = document.createElement('div');
-      gridArrayDiv[i].appendChild(gridArrayElements[i][j]);
-      gridArrayElements[i][j].classList.add('innerDiv');
-      gridArrayElements[i][j].style.width = `${boxDimension}px`;
-      gridArrayElements[i][j].style.height = `${boxDimension}px`;
-      gridArrayElements[i][j].style.backgroundColor = '#ddd';
-      gridArrayElements[i][j].addEventListener('mouseover', () => {
-        if (mouseDown) { gridArrayElements[i][j].style.backgroundColor = 'black'; }
-      })
+  const gridContainer = document.querySelector('.grid-container');
+  const squareDimension = 500 / density;
+  const gridRows = [];
+  const gridSquares = [];
+  for (let i = 0; i < density; i++) {
+    gridRows[i] = document.createElement('div');
+    gridRows[i].classList.add('grid-row');
+    gridContainer.appendChild(gridRows[i]);
+    gridSquares[i] = [];
+    for (let j = 0; j < density; j++) {
+      gridSquares[i][j] = document.createElement('div');
+      gridSquares[i][j].classList.add('grid-square');
+      gridRows[i].appendChild(gridSquares[i][j]);
+      gridSquares[i][j].style.width = squareDimension;
+      gridSquares[i][j].style.height = squareDimension;
+      gridSquares[i][j].style.backgroundColor = blankSquare;
+      gridSquares[i][j].addEventListener('mouseover', () => {
+        if (mouseDown) { gridSquares[i][j].style.backgroundColor = coloredSquare; }
+      });
     }
   }
 }
 
-// on document load
-createGrid(50);
-
-const resetButton = document.getElementById('reset-btn');
+// reset grid
+const resetButton = document.querySelector('.reset-btn');
 resetButton.addEventListener('click', () => {
   resetGrid();
 });
 
 function resetGrid() {
-  let innerDivs = document.getElementsByClassName('innerDiv');
-  for (item of innerDivs) { item.style.backgroundColor = '#ddd'; }
+  let gridSquares = document.getElementsByClassName('grid-square');
+  for (item of gridSquares) { item.style.backgroundColor = blankSquare; }
 }
 
-const densityButton25px = document.getElementById('25px-density');
-const densityButton50px = document.getElementById('50px-density');
-const densityButton100px = document.getElementById('100px-density');
+// on document load:
+createGrid(50);
 
-densityButton25px.addEventListener('click', () => {
-  document.getElementById('grid-container').innerHTML = '';
-  createGrid(25);
+// set square density
+let sliderValue = document.querySelector('#slider').value;
+const slider = document.querySelector('#slider');
+slider.addEventListener('change', () => {
+  sliderValue = slider.value;
+  const element = document.querySelector(".grid-container");
+  while (element.firstChild) {
+    element.removeChild(element.firstChild);
+  }
+  createGrid(sliderValue);
 });
 
-densityButton50px.addEventListener('click', () => {
-  document.getElementById('grid-container').innerHTML = '';
-  createGrid(50);
-});
-
-densityButton100px.addEventListener('click', () => {
-  document.getElementById('grid-container').innerHTML = '';
-  createGrid(100);
+// choose color
+const colorPicker = document.querySelector('#color-picker');
+colorPicker.addEventListener('change', () => {
+  coloredSquare = colorPicker.value;
 });
