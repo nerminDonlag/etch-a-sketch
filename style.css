@@ -1,3 +1,7 @@
+body {
+  background-color: blanchedalmond;
+}
+
 .container {
   width: 600px;
   margin: auto;
@@ -23,11 +27,15 @@
   cursor: crosshair;
 }
 
-.reset-btn {
+button {
   display: block;
-  margin-top: 18px;
+  margin-top: 10px;
   margin-left: auto;
   margin-right: auto;
+}
+
+.reset-btn {
+  margin-top: 18px;
 }
 
 h1, #author, .slider, .color-picker {

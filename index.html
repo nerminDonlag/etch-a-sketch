@@ -10,6 +10,7 @@
   <script src="script.js" defer></script>
 </head>
 
+<!-- ondragstart and ondrop fix unwanted pointer behavior -->
 <body ondragstart="return false;" ondrop="return false;">
   <div class="container">
     <h1>Etch-a-Sketch</h1>
@@ -21,8 +22,9 @@
     <div class="color-picker">
       <label for="color-picker">Set color:</label>
       <input type="color" id="color-picker">
-    </div>    
-    <button class="reset-btn">Reset sketch</button>
+    </div>
+    <button type="button" class="eraser-btn">Select Eraser</button>
+    <button type="button" class="reset-btn">Reset sketch</button>
     <p id="author">by <a href="https://github.com/nerminDonlag" target="_blank">Andy</a></p>
   </div>
 </body>

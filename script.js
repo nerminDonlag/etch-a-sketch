@@ -8,7 +8,7 @@ let coloredSquare = document.querySelector('#color-picker').value;
 // density is the number of squares in a row / column
 function createGrid(density) {
   const gridContainer = document.querySelector('.grid-container');
-  const squareDimension = 500 / density;
+  const squareDimension = 500 / density; // 500 is the .grid-container width and height in px
   const gridRows = [];
   const gridSquares = [];
   for (let i = 0; i < density; i++) {
@@ -60,4 +60,18 @@ slider.addEventListener('change', () => {
 const colorPicker = document.querySelector('#color-picker');
 colorPicker.addEventListener('change', () => {
   coloredSquare = colorPicker.value;
+});
+
+// select/deselect eraser
+let eraserIsSelected = false
+const eraserButton = document.querySelector('.eraser-btn');
+eraserButton.addEventListener('click', () => {
+  eraserIsSelected = !eraserIsSelected
+  if(eraserIsSelected) {
+    eraserButton.textContent = 'Deselect Eraser'
+    coloredSquare = blankSquare
+  } else {
+    eraserButton.textContent = 'Select Eraser'
+    coloredSquare = colorPicker.value
+  }
 });
